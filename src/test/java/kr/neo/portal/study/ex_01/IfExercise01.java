@@ -6,7 +6,7 @@ public class IfExercise01 {
 
     @Test
     public void test() {
-        int age = 9;
+        int age = 15;
         int charge = 0;
 
         if(age < 8) {
