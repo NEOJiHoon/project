@@ -11,4 +11,10 @@
     <delete id="deleteItem" parameterType="int">
         delete from item where item_id = #{itemId}
     </delete>
+    
+    <update id="updateItem" parameterType="Item">
+        update ITEM
+        set ITEM_NAME = #{itemName}, ITEM_PRICE = #{itemPrice}
+        where ITEM_ID = #{itemId}
+    </update>
 </mapper>

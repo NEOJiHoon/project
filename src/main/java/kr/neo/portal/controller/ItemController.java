@@ -24,4 +24,13 @@ public class ItemController {
     public void delete(@PathVariable int id){
         itemService.deleteItem(id);
     }
+
+    @GetMapping(value = "/item/update/{id}/{name}/{price}")
+    public void update(@PathVariable int id, @PathVariable String name, @PathVariable int price) {
+        Item item = new Item();
+        item.setItemId(id);
+        item.setItemName(name);
+        item.setItemPrice(price);
+        itemService.updateItem(item);
+    }
 }

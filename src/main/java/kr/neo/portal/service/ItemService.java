@@ -16,4 +16,8 @@ public class ItemService {
     public int deleteItem(int itemId) {
         return itemMapper.deleteItem(itemId);
     }
+
+    public int updateItem(Item item) {
+        return itemMapper.updateItem(item);
+    }
 }
