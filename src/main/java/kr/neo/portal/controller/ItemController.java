@@ -12,12 +12,16 @@ public class ItemController {
     @Autowired
     ItemService itemService;
 
-    @GetMapping(value = "/item/add/{id}")
-    public void add(@PathVariable int id) {
+    @GetMapping(value = "/item/add/{id}/{name}/{price}")
+    public void add(@PathVariable int id, @PathVariable String name, @PathVariable int price) {
         Item item = new Item();
         item.setItemId(id);
-        item.setItemName("사탕");
-        item.setItemPrice(1000);
+        item.setItemName(name);
+        item.setItemPrice(price);
         itemService.saveItem(item);
+    }
+    @GetMapping(value = "/item/del/{id}")
+    public void delete(@PathVariable int id){
+        itemService.deleteItem(id);
     }
 }

@@ -7,4 +7,8 @@
         insert into ITEM (ITEM_ID, ITEM_NAME, ITEM_PRICE)
         VALUES (#{itemId}, #{itemName}, #{itemPrice})
     </insert>
+
+    <delete id="deleteItem" parameterType="int">
+        delete from item where item_id = #{itemId}
+    </delete>
 </mapper>

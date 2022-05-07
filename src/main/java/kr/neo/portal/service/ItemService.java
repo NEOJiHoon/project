@@ -13,4 +13,7 @@ public class ItemService {
     public int saveItem(Item item) {
         return itemMapper.insertItem(item);
     }
+    public int deleteItem(int itemId) {
+        return itemMapper.deleteItem(itemId);
+    }
 }
