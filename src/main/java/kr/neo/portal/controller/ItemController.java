@@ -3,9 +3,7 @@ package kr.neo.portal.controller;
 import kr.neo.portal.model.Item;
 import kr.neo.portal.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,10 +20,7 @@ public class ItemController {
         item.setItemPrice(price);
         itemService.saveItem(item);
     }
-    @GetMapping(value = "/item/del/{id}")
-    public void delete(@PathVariable int id){
-        itemService.deleteItem(id);
-    }
+
 
     @GetMapping(value = "/item/update/{id}/{name}/{price}")
     public void update(@PathVariable int id, @PathVariable String name, @PathVariable int price) {

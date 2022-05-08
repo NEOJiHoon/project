@@ -25,8 +25,14 @@
         <td th:text="${item.itemId}"></td>
         <td th:text="${item.itemName}"></td>
         <td th:text="${item.itemPrice}"></td>
+        <td>
+            <form method="post" th:action="@{'/item/del/' + ${item.itemId}}">
+                <input type="submit" value="삭제"/>
+            </form>
+        </td>
     </tr>
     </tbody>
 </table>
+<hr/>
 </body>
 </html>
