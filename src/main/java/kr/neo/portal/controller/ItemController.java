@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class ItemController {
     @Autowired
@@ -32,5 +34,13 @@ public class ItemController {
         item.setItemName(name);
         item.setItemPrice(price);
         itemService.updateItem(item);
+    }
+
+    @GetMapping(value = "/items")
+    public void selectItems(){
+        List<Item> items = itemService.selectItems();
+        for (Item item : items){
+            System.out.println("ITEM: " + item );
+        }
     }
 }

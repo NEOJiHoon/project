@@ -17,4 +17,12 @@
         set ITEM_NAME = #{itemName}, ITEM_PRICE = #{itemPrice}
         where ITEM_ID = #{itemId}
     </update>
+
+    <select id="selectItems" resultType="Item">
+        select
+            item_id,
+            item_name,
+            item_price
+        from item
+    </select>
 </mapper>

@@ -5,6 +5,8 @@ import kr.neo.portal.model.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ItemService {
     @Autowired
@@ -19,5 +21,9 @@ public class ItemService {
 
     public int updateItem(Item item) {
         return itemMapper.updateItem(item);
+    }
+
+    public List<Item> selectItems(){
+        return itemMapper.selectItems();
     }
 }
