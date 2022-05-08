@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
-@Mapper
+@Mapper // 스프링컨테이너의 빈(bean)으로 등록됨
 public interface ItemMapper {
     int insertItem(Item item);
 

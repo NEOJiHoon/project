@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service // 스프링컨테이너에 빈(bean)으로 등록시킴
 public class ItemService {
     @Autowired
     ItemMapper itemMapper;

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@RestController // REST 웹 통신을 위한 컨트롤러
 public class ItemController {
     @Autowired
     ItemService itemService;
