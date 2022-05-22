@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller // 컨트롤러 웹페이지(html)을 리턴하는 기능을 함
@@ -27,6 +28,19 @@ public class HomeController {
     @PostMapping(value = "/item/del/{id}") // 웹통신시 http POST 메소드와 매핑
     public String delete(@PathVariable int id){
         itemService.deleteItem(id);
+        return "redirect:/home";
+    }
+
+    @PostMapping(value = "/item/update") // 웹통신시 http POST 메소드와 매핑
+    public String update(HttpServletRequest request){
+        String itemId = request.getParameter("itemId");
+        String itemName = request.getParameter("itemName");
+        String itemPrice = request.getParameter("itemPrice");
+        Item item = new Item();
+        item.setItemId(Integer.parseInt(itemId));
+        item.setItemName(itemName);
+        item.setItemPrice(Integer.parseInt(itemPrice));
+        itemService.updateItem(item);
         return "redirect:/home";
     }
 }
