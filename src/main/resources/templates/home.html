@@ -37,12 +37,16 @@
 <form method="post" th:action="@{'/item/update'}">
     <table>
         <tr>
-            <td>ID :<input type="text" name="itemId"/></td>
-            <td>이름 :<input type="text" name="itemName"/></td>
-            <td>가격 :<input type="text" name="itemPrice"/></td>
-            <td><input type="submit" value="수정"/></td>
+            <td>ID: <input type="text" name="itemId"/></td>
+        </tr>
+        <tr>
+            <td>이름: <input type="text" name="itemName"/></td>
+        </tr>
+        <tr>
+            <td>가격: <input type="text" name="itemPrice"/></td>
         </tr>
     </table>
+    <input type="submit" value="수정"/>
 </form>
 </body>
 </html>
