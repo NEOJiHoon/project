@@ -18,7 +18,18 @@ public class HomeController {
     ItemService itemService;
 
     @GetMapping(value = "/home") // 웹통신시 http GET 메소드와 매핑
-    public String home(Model model) {// 모델은 뷰(html)로 데이터를 전달하는 방법으로 사용됨.
+    public String home(Model model, HttpServletRequest request) {// 모델은 뷰(html)로 데이터를 전달하는 방법으로 사용됨.
+        String type = request.getParameter("type");
+        System.out.println("type: " + type);
+        if (type != null && type.equals("1")) {
+            model.addAttribute("message", "수정할 대상이 없습니다.");
+        } else if (type != null && type.equals("3")) {
+            model.addAttribute("message", "ITEM ID를 숫자로 입력해주세요.");
+        } else if (type != null && type.equals("4")) {
+            model.addAttribute("message", "가격을 숫자로 입력해 주세요.");
+        } else if (type != null && type.equals("5")) {
+            model.addAttribute("message", "이름을 입력해 주세요.");
+        }
         List<Item> items = itemService.selectItems();
         model.addAttribute("test", "테스트입니다.");
         model.addAttribute("items", items); // 모델에 items(리스트)를 전달
@@ -36,11 +47,30 @@ public class HomeController {
         String itemId = request.getParameter("itemId");
         String itemName = request.getParameter("itemName");
         String itemPrice = request.getParameter("itemPrice");
+        if (itemName == null || itemName.trim().equals("")) {
+            return "redirect:/home?type=5";
+        }
+
         Item item = new Item();
-        item.setItemId(Integer.parseInt(itemId));
+        try {
+            item.setItemId(Integer.parseInt(itemId));
+        } catch(NumberFormatException e) {
+            return "redirect:/home?type=3";
+        }
+
         item.setItemName(itemName);
-        item.setItemPrice(Integer.parseInt(itemPrice));
-        itemService.updateItem(item);
-        return "redirect:/home";
+        try {
+            item.setItemPrice(Integer.parseInt(itemPrice));
+        } catch(NumberFormatException e) {
+            return "redirect:/home?type=4";
+        }
+
+        int result = itemService.updateItem(item);  //
+        int type = 0;
+        if (result == 0) {
+            System.out.println("수정할 대상이 없습니다.");
+            type = 1;
+        }
+        return "redirect:/home?type=" + type;
     }
 }
