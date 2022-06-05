@@ -51,6 +51,28 @@ public class HomeController {
         return "redirect:/home";
     }
 
+    @PostMapping(value = "/item/insert")
+    public String insert(HttpServletRequest request) {
+        String itemId = request.getParameter("itemId");
+        String itemName = request.getParameter("itemName");
+        String itemPrice = request.getParameter("itemPrice");
+
+        System.out.println("itemId: " + itemId);
+        System.out.println("itemName: " + itemName);
+        System.out.println("itemPrice: " + itemPrice);
+
+
+
+        Item item = new Item();
+        item.setItemId(Integer.parseInt(itemId));
+        item.setItemName(itemName);
+        item.setItemPrice(Integer.parseInt(itemPrice));
+        itemService.saveItem(item);
+
+        return "redirect:/home";
+    }
+
+
     @PostMapping(value = "/item/update") // 웹통신시 http POST 메소드와 매핑
     public String update(HttpServletRequest request){
         String itemId = request.getParameter("itemId");
