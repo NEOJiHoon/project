@@ -32,10 +32,11 @@ public class ItemController {
     }
 
     @GetMapping(value = "/items")
-    public void selectItems(){
+    public List<Item> selectItems(){
         List<Item> items = itemService.selectItems();
         for (Item item : items){
             System.out.println("ITEM: " + item );
         }
+        return items;
     }
 }
