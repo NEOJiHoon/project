@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-@Controller // 컨트롤러 웹페이지(html)을 리턴하는 기능을 함
+@Controller // 컨트롤러 웹페이지(html)을 리턴하는 기능을 함 (데이터가 아닌 웹페이지(완성된 HTML)를 리턴)
 public class HomeController {
     @Autowired // 스프링컨테이너에서 꺼내오기 위함 (ItemService 를 가져옴)
     ItemService itemService;

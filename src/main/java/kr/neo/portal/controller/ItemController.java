@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController // REST 웹 통신을 위한 컨트롤러
+@RestController // REST 웹 통신을 위한 컨트롤러 (데이터만 주고 받기 위한 컨트롤러)
 public class ItemController {
     @Autowired
     ItemService itemService;
@@ -38,5 +38,12 @@ public class ItemController {
             System.out.println("ITEM: " + item );
         }
         return items;
+    }
+
+    @PostMapping(value = "/del/{id}")
+    public int delete(@PathVariable int id){
+        // 삭제결과가 delResult에 저장됨 (1=삭제, 0=삭제 대상 없음)
+        int delResult = itemService.deleteItem(id);
+        return delResult;
     }
 }
