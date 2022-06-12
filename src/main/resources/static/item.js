@@ -51,7 +51,9 @@ function getItemList() {
                         + "<td>" + data[i].itemName + "</td>"
                         + "<td>" + data[i].itemPrice + "</td>"
                         + "<td>"
-                        + "<button onclick=\"deleteItem(" + data[i].itemId +")\">삭 제</button>"
+                        + "<button class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#baboModal\" onclick='deleteTarget("
+                                + data[i].itemId + ",\"" + data[i].itemName + "\")'>삭 제</button>"
+                        // + "<button class=\"btn btn-primary\" onclick=\"deleteItem(" + data[i].itemId +")\">삭 제</button>"
                         + "</td>"
                         + "</tr>");
             }
@@ -61,8 +63,19 @@ function getItemList() {
         }
     });
 }
+getItemList();
 
-$("#babo").click(function(){
+var deleteTargetId = 0;
+var deleteTargetName = "";
+function deleteTarget(id, name) {
+    console.log('삭제 대상 선정', id, name);
+    deleteTargetId = id;
+    deleteTargetName = name;
+    console.log('deleteTargetId 변경됨', deleteTargetId);
+    $("#baboTarget").html(deleteTargetName);
+}
 
-    getItemList();
-});
+function deleteTargetItem() {
+    console.log('진짜 삭제', deleteTargetId);
+    deleteItem(deleteTargetId);
+}
