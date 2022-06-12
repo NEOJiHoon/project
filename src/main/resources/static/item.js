@@ -63,15 +63,19 @@ function getItemList() {
         }
     });
 }
+// 함수 정의가 끝난 후에 호출(최초의 Page호출시 자동으로 Item목록을 표시하기 위해서 호출)
 getItemList();
 
+// 전역변수 설정 (삭제 대상 id를 저장하기 위해)
 var deleteTargetId = 0;
+// 전역변수 설정 (삭제 대상 이름을 저장하기 위해)
 var deleteTargetName = "";
 function deleteTarget(id, name) {
     console.log('삭제 대상 선정', id, name);
     deleteTargetId = id;
     deleteTargetName = name;
     console.log('deleteTargetId 변경됨', deleteTargetId);
+    // id가 baboTarget인 엘리먼트를 deleteTargetName으로 덮어씀
     $("#baboTarget").html(deleteTargetName);
 }
 
